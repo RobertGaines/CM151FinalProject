@@ -1,6 +1,7 @@
 # CM151FinalProject
 
-* = most important
+\* = most important
+
 ~ = maybe/maybe not/if we have time
 
 Sound:
