@@ -1,5 +1,5 @@
-#N canvas 662 113 601 372 10;
-#X obj 248 113 *~ 0.9;
+#N canvas -7 0 958 988 10;
+#X obj 248 189 *~ 0.9;
 #N canvas 152 29 188 323 afterimage 0;
 #X obj 1 114 noise~;
 #X obj 16 176 noise~;
@@ -37,19 +37,19 @@
 #X connect 15 0 12 0;
 #X connect 15 0 13 0;
 #X connect 16 0 15 0;
-#X restore 248 91 pd afterimage;
-#X obj 272 262 distance;
-#X obj 323 238 line;
-#X obj 11 71 r go;
-#X obj 248 68 r go;
-#X obj 350 66 r go;
-#X obj 128 70 r go;
-#X obj 186 49 line;
-#X msg 186 26 1 \, 0 9000;
-#X obj 186 4 r go;
-#X obj 323 193 r go;
-#X obj 272 348 dac~;
-#X obj 286 288 s~ udly;
+#X restore 248 167 pd afterimage;
+#X obj 272 338 distance;
+#X obj 323 314 line;
+#X obj 11 147 r go;
+#X obj 248 144 r go;
+#X obj 350 142 r go;
+#X obj 128 146 r go;
+#X obj 186 125 line;
+#X msg 186 102 1 \, 0 9000;
+#X obj 186 80 r go;
+#X obj 323 269 r go;
+#X obj 272 424 dac~;
+#X obj 286 364 s~ udly;
 #N canvas 265 516 402 108 box 1;
 #X obj 319 51 switch~;
 #X obj 319 29 inlet;
@@ -78,23 +78,23 @@
 #X obj 232 66 udly 12000;
 #X obj 242 76 udly 12000;
 #X connect 1 0 0 0;
-#X restore 465 135 pd box of delays;
-#X obj 126 264 catch~ la;
-#X obj 368 263 catch~ ra;
-#X obj 465 115 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+#X restore 465 211 pd box of delays;
+#X obj 126 340 catch~ la;
+#X obj 368 339 catch~ ra;
+#X obj 465 191 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
 1;
-#X obj 490 112 s shake;
-#X obj 490 91 r go;
-#X obj 104 10 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+#X obj 490 188 s shake;
+#X obj 490 167 r go;
+#X obj 104 86 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
 -1;
-#X obj 104 32 s go;
-#X obj 186 71 * 2000;
-#X msg 323 215 0 \, 1 12000;
-#X obj 248 135 throw~ out;
-#X obj 197 264 catch~ out;
-#X obj 350 135 throw~ distance;
-#X obj 129 135 throw~ distance;
-#X obj 272 173 catch~ distance;
+#X obj 104 108 s go;
+#X obj 186 147 * 2000;
+#X msg 323 291 0 \, 1 12000;
+#X obj 248 211 throw~ out;
+#X obj 197 340 catch~ out;
+#X obj 350 211 throw~ distance;
+#X obj 129 211 throw~ distance;
+#X obj 272 249 catch~ distance;
 #N canvas 132 138 177 510 rumble 0;
 #X obj 17 110 noise~;
 #X obj 33 314 -~ 0.5;
@@ -162,7 +162,7 @@
 #X connect 28 0 22 0;
 #X connect 29 0 30 0;
 #X connect 30 0 27 0;
-#X restore 128 93 pd rumble;
+#X restore 128 169 pd rumble;
 #N canvas 264 575 152 190 strike 0;
 #X obj 0 172 outlet~;
 #X obj 1 44 route 0 1 2 3;
@@ -182,7 +182,7 @@
 #X connect 5 0 0 0;
 #X connect 6 0 0 0;
 #X connect 7 0 0 0;
-#X restore 11 94 pd strike sound;
+#X restore 11 170 pd strike sound;
 #N canvas 148 116 232 212 deep 0;
 #X obj 8 -8 noise~;
 #X obj 7 161 *~;
@@ -214,15 +214,19 @@
 #X connect 12 0 11 0;
 #X connect 13 0 14 0;
 #X connect 14 0 1 0;
-#X restore 350 88 pd deep;
-#X obj 11 135 throw~ out;
-#X obj 11 115 *~ 0.3;
-#X obj 129 114 *~ 0.3;
-#X obj 350 111 *~ 0.5;
-#X obj 10 4 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X restore 350 164 pd deep;
+#X obj 11 211 throw~ out;
+#X obj 11 191 *~ 0.3;
+#X obj 129 190 *~ 0.3;
+#X obj 350 187 *~ 0.5;
+#X obj 10 80 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X msg 10 24 \; pd dsp \$1;
-#X text 277 17 Original File from: Andy Farnell's Designing Sound;
+#X msg 10 100 \; pd dsp \$1;
+#X text 277 93 Original File from: Andy Farnell's Designing Sound;
+#X obj 449 135 loadbang;
+#X obj 36 32 key;
+#X obj 14 55 select 32, f 10;
+#X obj 110 59 r strike;
 #X connect 0 0 24 0;
 #X connect 1 0 0 0;
 #X connect 2 0 12 0;
@@ -254,3 +258,7 @@
 #X connect 34 0 27 0;
 #X connect 35 0 26 0;
 #X connect 36 0 37 0;
+#X connect 39 0 17 0;
+#X connect 40 0 41 0;
+#X connect 41 0 36 0;
+#X connect 42 0 20 0;

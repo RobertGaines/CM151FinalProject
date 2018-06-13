@@ -7,9 +7,9 @@
 Sound:
 - *thunder (everyone?)
     - thunder modulated in distance + delay bc of distance
-- *rain (Jimmy TEMP)
+- *rain (Jimmy)
 - wind (Robert TEMP)
-- footsteps mushy ground (Pratik? TEMP)
+- footsteps mushy ground (Robert) -> quieter if slower, splooshier if after a jump
 - ambient music (Jimmy)
 - ~wind through trees -> then need to make trees
 - ~breathing?
@@ -22,7 +22,7 @@ Visuals:
 - ~ground texture (Robert)
 - skybox/dark grey color
 - ~maybe blocky cloud models that move
-- ~maybe rain falling
+- ~maybe rain falling (Robert)
 
 Controls:
 - use built in unity FPS controller (Robert)

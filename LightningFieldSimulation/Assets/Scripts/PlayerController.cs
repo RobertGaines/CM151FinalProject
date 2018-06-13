@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityOSC;
+//using UnityOSC;
 
 public class PlayerController : MonoBehaviour 
 {	
@@ -17,8 +17,7 @@ public class PlayerController : MonoBehaviour
 		winText.text = "";
 		numberOfGameObjects = GameObject.FindGameObjectsWithTag("PickUp").Length;
 		
-		OSCHandler.Instance.Init ();
-		OSCHandler.Instance.SendMessageToClient("PD", "unity/trigger", "me be ready"); //app to send to, osc address, actual message
+		//original osc lines here
 	}
 	
 	void FixedUpdate ()
