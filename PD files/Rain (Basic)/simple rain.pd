@@ -1,15 +1,16 @@
-#N canvas 677 281 272 383 10;
+#N canvas 677 281 272 364 10;
 #X obj 66 204 dac~;
 #X obj 111 105 + 0.004;
 #X obj 106 77 / 20;
 #X obj 116 54 hsl 128 15 0 1 0 0 empty empty empty 12 7 1 8 -262144
--1 -1 1000 1;
+-1 -1 0 1;
 #X obj 71 171 hip~ 2000;
 #X obj 74 139 drops 7.7 0.013 0.16 3;
 #X text 135 32 left = more intense;
 #X obj 22 10 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X msg 22 30 \; pd dsp \$1;
+#X text 139 230 From: Andy Farnell's Designing Sound;
 #X connect 1 0 5 1;
 #X connect 2 0 1 0;
 #X connect 3 0 2 0;
