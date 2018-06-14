@@ -6,18 +6,20 @@
 
 
 Robert TODO (as far as I can get):
-- lightning delay
+- lightning delay CHECK
 - multiple lightning channels
    \-> have a controller instance thunder4 3+ times
-- stereo lightning seperate per strike
+- stereo lightning seperate per strike NOPE
+- make stuff start when unity says ready
 - better looking lightning
 - footstep sounds
+- figure out how to make unity full screen
 ~ make ground semi reflect
 ~ lightning emit light
 
 Jimmy TODO (as far as I can get):
-- make wind vary
-- ambient music if possible (evil organ)
+- make wind vary CHECK
+- ambient music if possible (evil organ) CHECK
 - footsteps
 
 

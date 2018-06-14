@@ -20,7 +20,7 @@ public class MainTimer : MonoBehaviour {
 		
 		OSCHandler.Instance.Init();
 		//OSCHandler.Instance.CreateClient("PD", IPAddress.Parse("127.0.0.1"), 8000);
-		OSCHandler.Instance.SendMessageToClient("pd", "/unity/trigger", "ready");
+		OSCHandler.Instance.SendMessageToClient("pd", "/unity/onboot", "ready");
 		
 		player = GameObject.Find("Player");
 		
@@ -31,8 +31,8 @@ public class MainTimer : MonoBehaviour {
 		yield return new WaitForSeconds(0);
 		while (true) {
 			Strike();
-			float waitTime = Mathf.Pow(Random.Range(1.0f, 5.0f), 2f) - 1; //SQUARE SHORTER TIME INSTEAD
-			if (waitTime > 17) {
+			float waitTime = Mathf.Pow(Random.Range(2.0f, 3.0f), 2f) - 1; //SQUARE SHORTER TIME INSTEAD
+			if (waitTime > 18) {
 				waitTime = Random.Range(0.0f, 0.8f);
 				//print("DOUBLE STRIKE");
 			}
@@ -68,11 +68,12 @@ public class MainTimer : MonoBehaviour {
 
 	void Strike() {
 		//print ("\tI'm striking");
+		OSCHandler.Instance.SendMessageToClient("pd", "/unity/onboot", "ready"); //just in case
 
 		Vector3 pos = new Vector3(Random.Range(-strikeRange, strikeRange), 240f, Random.Range(-strikeRange, strikeRange));
 		/*GameObject newBolt =*/ //Instantiate(bolt, pos, Quaternion.identity);//(GameObject)Instantiate(Resources.Load("Strike"));
 		//newBolt.transform.position = pos;
-		pos += new Vector3(600f, 0f, 0f);//REMOVE LATER
+		pos += new Vector3(250f, 0f, 0f);//REMOVE LATER
 		
 		float dist = Vector3.Distance(new Vector3(pos.x, 5f, pos.z), player.transform.position);
 		double thunderDelay = dist * 4; // max 500 away = 5000 milisec delay
