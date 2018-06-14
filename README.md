@@ -4,6 +4,22 @@
 
 ~ = maybe/maybe not/if we have time
 
+
+Robert TODO (as far as I can get):
+- lightning delay
+- stereo lightning seperate per strike
+- better looking lightning
+- footstep sounds
+~ make ground semi reflect
+~ lightning emit light
+
+Jimmy TODO (as far as I can get):
+- make wind vary
+- ambient music if possible (evil organ)
+- footsteps
+
+
+# ~~~ OLD CRAP ~~~
 Sound:
 - *thunder (everyone?)
     - thunder modulated in distance + delay bc of distance

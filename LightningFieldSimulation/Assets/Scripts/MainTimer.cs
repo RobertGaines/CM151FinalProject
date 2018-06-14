@@ -17,7 +17,8 @@ public class MainTimer : MonoBehaviour {
 	void Start() {
 		Application.runInBackground = true;
 		OSCHandler.Instance.Init();
-		OSCHandler.Instance.SendMessageToClient ("PD", "/unity/trigger", "ready");
+		//OSCHandler.Instance.CreateClient("PD", IPAddress.Parse("127.0.0.1"), 8000);
+		OSCHandler.Instance.SendMessageToClient("pd", "/unity/trigger", "ready");
 		StartCoroutine(StrikeTimer());
 	}
 
@@ -25,7 +26,7 @@ public class MainTimer : MonoBehaviour {
 		yield return new WaitForSeconds(0);
 		while (true) {
 			Strike();
-			float waitTime = Mathf.Sqrt(Random.Range(1.0f, 2.0f)) - 1; //SQUARE SHORTER TIME INSTEAD
+			float waitTime = Mathf.Sqrt(Random.Range(1.0f, 33.0f)) - 1; //SQUARE SHORTER TIME INSTEAD
 			print("\tWait time: " + waitTime);
 			yield return new WaitForSeconds(waitTime);
 		}
@@ -59,19 +60,20 @@ public class MainTimer : MonoBehaviour {
 	void Strike() {
 		//print ("\tI'm striking");
 
-		Vector3 pos = new Vector3(Random.Range(-strikeRange, strikeRange), 200f, Random.Range(-strikeRange, strikeRange));
+		Vector3 pos = new Vector3(Random.Range(-strikeRange, strikeRange), 240f, Random.Range(-strikeRange, strikeRange));
 		/*GameObject newBolt =*/ //Instantiate(bolt, pos, Quaternion.identity);//(GameObject)Instantiate(Resources.Load("Strike"));
 		//newBolt.transform.position = pos;
 		GenerateBolt(pos);
 		//app to send to, osc address, actual message
-		OSCHandler.Instance.SendMessageToClient("PD", "/unity/trigger", 42);
+		OSCHandler.Instance.SendMessageToClient("pd", "/unity/trigger", 2);
 	}
 	
 	void GenerateBolt(Vector3 initPos) {
 		
-		int boltSegments = 10 + Random.Range(-6, 7); //top number is exclusive for ints
+		int boltSegments = 8 + Random.Range(-6, 7); //top number is exclusive for ints
 		float rotAxisMax = 10f; //actually in degrees
 		float rotAxisBendMax = 90f;
+		//var for previous rotation to factor in
 		
 		int i = 0;
 		Vector3 boltSourcePos = initPos;
@@ -83,6 +85,8 @@ public class MainTimer : MonoBehaviour {
 			boltSegment.Rotate(rotateAmt);
 			
 			Vector3 boltSize = boltSegment.GetComponent<Renderer>().bounds.size;
+			//boltSegment.position = boltSourcePos + -0.5f*boltSize*boltSegment.rotation.eulerAngles;
+			//boltSourcePos = boltSegment.position + 0.5f*boltSize*boltSegment.rotation.eulerAngles;
 			boltSegment.position = boltSourcePos + -1f*boltSize;
 			boltSourcePos = boltSegment.position;
 			i++;
