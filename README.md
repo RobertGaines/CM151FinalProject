@@ -7,6 +7,8 @@
 
 Robert TODO (as far as I can get):
 - lightning delay
+- multiple lightning channels
+   \-> have a controller instance thunder4 3+ times
 - stereo lightning seperate per strike
 - better looking lightning
 - footstep sounds

@@ -43,26 +43,40 @@
 -1;
 #X obj 744 290 list append 452.3;
 #X obj 232 144 unpack;
-#X symbolatom 264 499 10 0 0 0 - - -, f 10;
-#X floatatom 193 552 5 0 0 0 - - -, f 5;
-#X floatatom 239 552 5 0 0 0 - - -, f 5;
-#X obj 50 470 unpack f f f;
-#X text 56 446 messageTypeFlag \, float1 \, float2;
-#X floatatom 56 518 5 0 0 0 - - -, f 5;
-#X obj 60 567 route 0 1, f 14;
-#X obj 39 589 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X symbolatom 293 676 10 0 0 0 - - -, f 10;
+#X floatatom 222 729 5 0 0 0 - - -, f 5;
+#X floatatom 268 729 5 0 0 0 - - -, f 5;
+#X obj 79 647 unpack f f f;
+#X text 85 623 messageTypeFlag \, float1 \, float2;
+#X floatatom 85 695 5 0 0 0 - - -, f 5;
+#X obj 89 744 route 0 1, f 14;
+#X obj 68 766 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 81 591 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 150 590 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 110 768 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 35 679 s crescendoForXSec;
-#X obj 118 644 s thunderMakeFromHere;
-#X obj 177 592 print oops;
-#X text 279 551 <- how do I send these?;
+#X obj 179 767 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 64 856 s crescendoForXSec;
+#X obj 147 821 s thunderMakeFromHere;
+#X obj 206 769 print oops;
+#X text 308 728 <- how do I send these?;
 #X text 511 183 does not work;
-#X obj 84 381 s strike;
-#X obj 89 352 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 98 478 s strike;
+#X text 29 585 UNUSED UNUSED UNUSED UNUSED;
+#X obj 82 346 list trim;
+#X floatatom 82 416 5 0 0 0 - - -, f 5;
+#X obj 82 372 route unity;
+#X obj 81 393 route trigger;
+#X obj 33 442 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 48 468 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 47 394 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 97 447 pipe;
+#X text 134 447 what you'd think delay would be;
+#X floatatom 170 423 5 0 0 0 - - -, f 5;
+#X obj 71 443 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X connect 4 0 39 0;
 #X connect 5 0 6 0;
@@ -78,7 +92,8 @@
 #X connect 17 0 19 0;
 #X connect 18 0 19 0;
 #X connect 19 0 20 0;
-#X connect 20 0 56 0;
+#X connect 20 0 21 0;
+#X connect 20 0 58 0;
 #X connect 22 0 4 0;
 #X connect 25 0 17 0;
 #X connect 26 0 11 0;
@@ -99,4 +114,13 @@
 #X connect 47 1 52 0;
 #X connect 47 2 50 0;
 #X connect 47 2 53 0;
-#X connect 57 0 56 0;
+#X connect 58 0 60 0;
+#X connect 59 0 62 0;
+#X connect 59 0 65 1;
+#X connect 59 0 68 0;
+#X connect 60 0 61 0;
+#X connect 61 0 59 0;
+#X connect 64 0 59 0;
+#X connect 65 0 63 0;
+#X connect 65 0 56 0;
+#X connect 68 0 65 0;

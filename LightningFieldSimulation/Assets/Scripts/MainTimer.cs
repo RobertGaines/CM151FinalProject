@@ -9,6 +9,7 @@ public class MainTimer : MonoBehaviour {
 
 	public float strikeRange = 500f;
 	public Transform bolt;
+	public GameObject player;
 	
 	public Text countText;
 	Dictionary<string, ServerLog> servers = new Dictionary<string, ServerLog> ();
@@ -16,9 +17,13 @@ public class MainTimer : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
 		Application.runInBackground = true;
+		
 		OSCHandler.Instance.Init();
 		//OSCHandler.Instance.CreateClient("PD", IPAddress.Parse("127.0.0.1"), 8000);
 		OSCHandler.Instance.SendMessageToClient("pd", "/unity/trigger", "ready");
+		
+		player = GameObject.Find("Player");
+		
 		StartCoroutine(StrikeTimer());
 	}
 
@@ -26,8 +31,12 @@ public class MainTimer : MonoBehaviour {
 		yield return new WaitForSeconds(0);
 		while (true) {
 			Strike();
-			float waitTime = Mathf.Sqrt(Random.Range(1.0f, 33.0f)) - 1; //SQUARE SHORTER TIME INSTEAD
-			print("\tWait time: " + waitTime);
+			float waitTime = Mathf.Pow(Random.Range(1.0f, 5.0f), 2f) - 1; //SQUARE SHORTER TIME INSTEAD
+			if (waitTime > 17) {
+				waitTime = Random.Range(0.0f, 0.8f);
+				//print("DOUBLE STRIKE");
+			}
+			//print("\tWait time: " + waitTime);
 			yield return new WaitForSeconds(waitTime);
 		}
 	}
@@ -63,9 +72,16 @@ public class MainTimer : MonoBehaviour {
 		Vector3 pos = new Vector3(Random.Range(-strikeRange, strikeRange), 240f, Random.Range(-strikeRange, strikeRange));
 		/*GameObject newBolt =*/ //Instantiate(bolt, pos, Quaternion.identity);//(GameObject)Instantiate(Resources.Load("Strike"));
 		//newBolt.transform.position = pos;
+		pos += new Vector3(600f, 0f, 0f);//REMOVE LATER
+		
+		float dist = Vector3.Distance(new Vector3(pos.x, 5f, pos.z), player.transform.position);
+		double thunderDelay = dist * 4; // max 500 away = 5000 milisec delay
+		print("dist to player: " + dist + " -> delay: " + thunderDelay);
+		OSCHandler.Instance.SendMessageToClient("pd", "/unity/trigger", (int)thunderDelay);
+		
 		GenerateBolt(pos);
+		
 		//app to send to, osc address, actual message
-		OSCHandler.Instance.SendMessageToClient("pd", "/unity/trigger", 2);
 	}
 	
 	void GenerateBolt(Vector3 initPos) {
